@@ -1,5 +1,8 @@
+import os
 from pathlib import Path
+from dotenv import load_dotenv
 import environ
+load_dotenv()
 
 env = environ.Env()
 environ.Env.read_env()
@@ -24,6 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'blog.apps.BlogConfig',
+    'blog_api.apps.BlogApiConfig',
 ]
 
 MIDDLEWARE = [
