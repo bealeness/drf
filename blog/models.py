@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.utils import timezone
 
 class Category(models.Model):
@@ -28,7 +28,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=230, unique_for_date='published')
     published = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='posts'
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='posts'
     )
     status = models.CharField(max_length=10, choices=options, default='published')
 
